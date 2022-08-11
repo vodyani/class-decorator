@@ -1,12 +1,13 @@
 # Vodyani class-decorator
 
-🏭 Vodyani class-decorator 提供了开箱即用的类工具方法和装饰器，包含：类的验证、组装、转换、属性绑定等功能。
+🏭 Vodyani class-decorator 提供了开箱即用的工具方法和类装饰器，包含：类的验证、组装、转换、属性绑定等功能。
 
 [![Npm](https://img.shields.io/npm/v/@vodyani/class-decorator/latest.svg)](https://www.npmjs.com/package/@vodyani/class-decorator)
 [![Npm](https://img.shields.io/npm/v/@vodyani/class-decorator/beta.svg)](https://www.npmjs.com/package/@vodyani/class-decorator)
 [![Npm](https://img.shields.io/npm/dm/@vodyani/class-decorator)](https://www.npmjs.com/package/@vodyani/class-decorator)
 [![License](https://img.shields.io/github/license/vodyani/class-decorator)](LICENSE)
 <br>
+[![codecov](https://codecov.io/gh/vodyani/class-decorator/branch/master/graph/badge.svg?token=C2M059D521)](https://codecov.io/gh/vodyani/class-decorator)
 ![Workflow](https://github.com/vodyani/class-decorator/actions/workflows/release.yml/badge.svg)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
