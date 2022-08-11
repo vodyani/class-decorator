@@ -14,7 +14,7 @@ jobs:
     needs: [check]
     uses: vodyani/workflows/.github/workflows/publish-codecov.yml@master
     secrets:
-      CODE_COV_CI_TOKEN: ${{ secrets.<PACKAGE_CODE_COV_CI_TOKEN> }}
+      CODE_COV_CI_TOKEN: ${{ secrets.CODE_COV_CI_TOKEN_BY_CLASS_DECORATOR }}
 
   semantic_release:
     needs: [codecov]
