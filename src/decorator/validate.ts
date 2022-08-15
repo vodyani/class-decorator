@@ -7,14 +7,13 @@ import {
 } from '../method';
 import {
   Class,
+  Method,
   RequiredKey,
   ValidatedKey,
-  PromiseMethod,
   EachValidatedKey,
   ValidateMetaData,
   CustomValidatedKey,
   ArgumentValidateOptions,
-  ValidateMethod,
 } from '../common';
 
 /**
@@ -87,7 +86,7 @@ export function EachValidated(type: Class) {
  *
  * @publicApi
  */
-export function CustomValidated(validator: ValidateMethod, message: string) {
+export function CustomValidated(validator: Method<boolean>, message: string) {
   return function(target: any, property: any, index: number) {
     const data = getReflectOwnMetadata(CustomValidatedKey, target, property);
     const metadata: ValidateMetaData = { index, message, validator };
@@ -105,7 +104,7 @@ export function CustomValidated(validator: ValidateMethod, message: string) {
  * @publicApi
  */
 export function ArgumentValidator(options?: ArgumentValidateOptions) {
-  return function(target: any, property: string, descriptor: TypedPropertyDescriptor<PromiseMethod>) {
+  return function(target: any, property: string, descriptor: TypedPropertyDescriptor<Method<Promise<any>>>) {
     const method = descriptor.value;
     const errorMode = options?.Mode || Error;
 
