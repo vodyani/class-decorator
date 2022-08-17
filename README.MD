@@ -24,7 +24,7 @@ npm install @vodyani/class-decorator
 
 ## Questions
 
-- [Vodyani class-decorator discussions 🧐](https://github.com/vodyani/class-decorator/discussions)
+- [Discussions 🧐](https://github.com/vodyani/class-decorator/discussions)
 
 ## Team
 

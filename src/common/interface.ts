@@ -1,6 +1,6 @@
 import { ValidatorOptions } from 'class-validator';
 
-import { Method, ValidateMethod } from './type';
+import { Method } from './type';
 import { ClassTransformOptions } from './declare';
 
 /**
@@ -33,7 +33,6 @@ export interface ConvertOptions {
   transformer?: Method;
 }
 
-
 export interface ValidateMetaData {
   /** The argument index. */
   index: number;
@@ -42,7 +41,7 @@ export interface ValidateMetaData {
   /** The error message. */
   message?: string;
   /** The custom validation function */
-  validator?: ValidateMethod;
+  validator?: Method<boolean>;
 }
 
 /**
@@ -54,7 +53,7 @@ export interface ValidateMetaData {
  */
 export interface ArgumentValidateOptions extends ClassValidateOptions {
   /** The error mode */
-  Mode?: Class<Error>;
+  error?: Class<Error>;
 }
 
 export interface ClassValidateOptions {
