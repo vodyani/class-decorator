@@ -7,7 +7,7 @@ import { isValidBuffer, toNumber, isValid } from '@vodyani/utils';
 import {
   ValidateNested, IsNotEmpty, IsNumber, IsArray, IsObject,
   Type, Expose, TransformSet, TransformMap, TransformValue, Assemble,
-  IsString, ArgumentValidator, ValidateIf, Validated, Required, EachValidated, CustomValidated,
+  IsString, ArgumentValidator, AssembleValidator, ValidateIf, Validated, Required, EachValidated, CustomValidated,
 } from '../src';
 
 // base test
@@ -21,25 +21,31 @@ class DemoData {
 
 class Demo {
   // @ts-ignore
-  @ArgumentValidator() async getData(@Validated data: DemoData) { return data }
+  @AssembleValidator() async getData(@Validated data: DemoData) { return data }
   // @ts-ignore
-  @ArgumentValidator({ validate: { forbidUnknownValues: true }}) async getData2(@Validated data: DemoData) { return data }
+  @AssembleValidator({ validate: { forbidUnknownValues: true }}) async getData2(@Validated data: DemoData) { return data }
+
   // @ts-ignore
-  @ArgumentValidator({ Mode: UnauthorizedException }) async getData3(@Validated data: DemoData, @Required('test') name?: string) { return { name, data } }
+  @ArgumentValidator(UnauthorizedException)
   // @ts-ignore
-  @ArgumentValidator() async getData4(@EachValidated(DemoData) list: DemoData[]) { return list }
+  @AssembleValidator({ error: UnauthorizedException })
   // @ts-ignore
-  @ArgumentValidator({ Mode: UnauthorizedException }) async getData5(@Required() list: DemoData[]) { return list }
+  async getData3(@Validated data: DemoData, @Required('test') name?: string) { return { name, data } }
+
   // @ts-ignore
-  @ArgumentValidator({ Mode: UnauthorizedException }) async getData6(@EachValidated(DemoData) list: DemoData[]) { return list }
+  @AssembleValidator() async getData4(@EachValidated(DemoData) list: DemoData[]) { return list }
   // @ts-ignore
-  @ArgumentValidator({ Mode: UnauthorizedException }) async getData7(@EachValidated(DemoData) list: DemoData[]) { throw new Error(JSON.stringify(list)) }
+  @ArgumentValidator(UnauthorizedException) async getData5(@Required() list: DemoData[]) { return list }
   // @ts-ignore
-  @ArgumentValidator() async getData8(@EachValidated(DemoData) map: Map<DemoData>) { return map }
+  @AssembleValidator({ error: UnauthorizedException }) async getData6(@EachValidated(DemoData) list: DemoData[]) { return list }
   // @ts-ignore
-  @ArgumentValidator() async getData9(@EachValidated(DemoData) set: Set<DemoData>) { return set }
+  @AssembleValidator({ error: UnauthorizedException }) async getData7(@EachValidated(DemoData) list: DemoData[]) { throw new Error(JSON.stringify(list)) }
   // @ts-ignore
-  @ArgumentValidator() async getData10(@CustomValidated(isValidBuffer, 'not buffer') buffer: Buffer<any>) { return buffer }
+  @AssembleValidator() async getData8(@EachValidated(DemoData) map: Map<DemoData>) { return map }
+  // @ts-ignore
+  @AssembleValidator() async getData9(@EachValidated(DemoData) set: Set<DemoData>) { return set }
+  // @ts-ignore
+  @ArgumentValidator() async getData10(@CustomValidated(isValidBuffer, 'not buffer') buffer: Buffer) { return buffer }
 }
 
 describe('base test', () => {
@@ -127,10 +133,15 @@ describe('base test', () => {
     }
 
     try {
-      await demo.getData10(null);
+      await demo.getData10(null as any);
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
     }
+
+    const buffer = Buffer.from([]);
+    const result = await demo.getData10(buffer);
+
+    expect(result).toEqual(buffer);
   });
 });
 
@@ -164,7 +175,7 @@ class Service {
     return { user, userArray, userSet, userMap } as any;
   }
 
-  @ArgumentValidator()
+  @AssembleValidator()
   // @ts-ignore
   public async test(@Validated demo2: Demo2) {
     return demo2;

@@ -53,7 +53,7 @@ export interface ValidateMetaData {
  */
 export interface ArgumentValidateOptions extends ClassValidateOptions {
   /** The error mode */
-  Mode?: Class<Error>;
+  error?: Class<Error>;
 }
 
 export interface ClassValidateOptions {
