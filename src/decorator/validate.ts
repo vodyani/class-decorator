@@ -42,7 +42,7 @@ export function Required(message?: string) {
  *
  * @tips
  * - This is a parameter Decorator.
- * - Must be used in conjunction with the method decorator: `ArgumentValidator` !
+ * - Must be used in conjunction with the method decorator: `AssembleValidator` !
  *
  * @publicApi
  */
@@ -58,7 +58,7 @@ export function Validated(target: any, property: any, index: number) {
  *
  * @tips
  * - This is a parameter Decorator.
- * - Must be used in conjunction with the method decorator: `ArgumentValidator` !
+ * - Must be used in conjunction with the method decorator: `AssembleValidator` !
  *
  * @param type The classes that need to be validated.
  *
@@ -99,21 +99,40 @@ export function CustomValidated(validator: Method<boolean>, message: string) {
 /**
  * Method validator, needs to be used in combination with other parameter decorators.
  *
+ * @param error The error class
+ *
+ * @publicApi
+ */
+export function ArgumentValidator(error: Class<Error> = Error) {
+  return function(target: any, property: string, descriptor: TypedPropertyDescriptor<Method<any>>) {
+    const method = descriptor.value;
+
+    descriptor.value = function(...args: any[]) {
+      toCustomValidate(args, target, property, error);
+      toValidateRequired(args, target, property, error);
+
+      const result = method.apply(this, args);
+      return result;
+    };
+
+    return descriptor;
+  };
+}
+/**
+ * Method validator, needs to be used in combination with other parameter decorators.
+ *
  * @param options The argument validator options.
  *
  * @publicApi
  */
-export function ArgumentValidator(options?: ArgumentValidateOptions) {
+export function AssembleValidator(options?: ArgumentValidateOptions) {
   return function(target: any, property: string, descriptor: TypedPropertyDescriptor<Method<Promise<any>>>) {
     const method = descriptor.value;
-    const errorMode = options?.Mode || Error;
+    const error = options?.error || Error;
 
     descriptor.value = async function(...args: any[]) {
-      toCustomValidate(args, target, property, errorMode);
-      toValidateRequired(args, target, property, errorMode);
-
-      await toValidated(args, target, property, errorMode, options);
-      await toEachValidate(args, target, property, errorMode, options);
+      await toValidated(args, target, property, error, options);
+      await toEachValidate(args, target, property, error, options);
 
       const result = await method.apply(this, args);
       return result;
