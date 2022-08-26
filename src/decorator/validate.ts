@@ -1,3 +1,5 @@
+import { Method } from '@vodyani/utils';
+
 import {
   toValidated,
   toEachValidate,
@@ -7,7 +9,6 @@ import {
 } from '../method';
 import {
   Class,
-  Method,
   RequiredKey,
   ValidatedKey,
   EachValidatedKey,

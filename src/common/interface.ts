@@ -1,6 +1,6 @@
+import { Method } from '@vodyani/utils';
 import { ValidatorOptions } from 'class-validator';
 
-import { Method } from './type';
 import { ClassTransformOptions } from './declare';
 
 /**

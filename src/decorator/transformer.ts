@@ -1,9 +1,10 @@
 import { isPromise } from 'util/types';
 
+import { Method } from '@vodyani/utils';
 import { ClassTransformOptions, Transform } from 'class-transformer';
 
+import { Class } from '../common';
 import { toAssemble } from '../method';
-import { Class, Method } from '../common';
 
 /**
  * Following the function's successful completion, the result is automatically loaded using the class that was supplied.
