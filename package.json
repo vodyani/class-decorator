@@ -64,7 +64,7 @@
   "devDependencies": {
     "@commitlint/cli": "16.2.3",
     "@commitlint/config-conventional": "16.2.1",
-    "@nestjs/swagger": "^6.0.5",
+    "@nestjs/swagger": "6.1.0",
     "@types/jest": "27.4.1",
     "@types/node": "16.11.26",
     "@vodyani/eslint-config": "^1.0.10",
