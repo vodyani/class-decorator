@@ -1,4 +1,4 @@
 export * from './reflect';
-export * from './transformer';
+export * from './transform';
 export * from './validate-class';
 export * from './validate-param';

@@ -3,7 +3,7 @@ import { isValidArray, isValidObject } from '@vodyani/utils';
 
 import { Class, ClassValidateOptions } from '../common';
 
-import { toAssemble } from './transformer';
+import { toAssemble } from './transform';
 
 /**
  * Validate the class structure against the incoming classes and data.
