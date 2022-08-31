@@ -1,3 +1,10 @@
+# [8.2.0](https://github.com/vodyani/class-decorator/compare/v8.1.2...v8.2.0) (2022-08-31)
+
+
+### Features
+
+* change dependencies ([17b9b30](https://github.com/vodyani/class-decorator/commit/17b9b302921567b88bb913d5634ed5fc8fa085fa))
+
 ## [8.1.2](https://github.com/vodyani/class-decorator/compare/v8.1.1...v8.1.2) (2022-08-26)
 
 
