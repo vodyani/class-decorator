@@ -68,10 +68,6 @@
     "lodash": "4.17.21",
     "reflect-metadata": "0.1.13"
   },
-  "peerDependencies": {
-    "class-transformer": "0.5.1",
-    "class-validator": "0.13.2"
-  },
   "devDependencies": {
     "@commitlint/cli": "16.3.0",
     "@commitlint/config-conventional": "16.2.4",
