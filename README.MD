@@ -32,6 +32,8 @@ npm install @vodyani/class-decorator
 |:-:|
 |[ChoGathK](https://github.com/chogathK)|
 
+![Alt](https://repobeats.axiom.co/api/embed/aeed19ccb4224b3e9710fab38c646683235ee85d.svg "Repobeats analytics image")
+
 ## License
 
 Vodyani class-decorator is [MIT licensed](LICENSE).
