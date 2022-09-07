@@ -8,15 +8,13 @@ describe('convert', () => {
   it('ResultTransformer', async () => {
     class Demo {
       @ResultTransformer(toString)
-      // @ts-ignore
       public getName() {
-        return null;
+        return null as any;
       }
 
       @ResultTransformer(toNumber)
-      // @ts-ignore
       public async asyncGetName() {
-        return null;
+        return null as any;
       }
     }
 
@@ -33,7 +31,6 @@ describe('convert', () => {
 
     class Demo {
       @ArgumentTransformer(fn)
-      // @ts-ignore
       public returnAge(age: number) {
         return age;
       }

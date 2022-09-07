@@ -1,3 +1,31 @@
+## [8.2.1](https://github.com/vodyani/class-decorator/compare/v8.2.0...v8.2.1) (2022-08-31)
+
+
+### Bug Fixes
+
+* remove invalid dependency declarations ([752b154](https://github.com/vodyani/class-decorator/commit/752b1542554e7a9387c552b7793ecd2c2bddc79b))
+
+# [8.2.0](https://github.com/vodyani/class-decorator/compare/v8.1.2...v8.2.0) (2022-08-31)
+
+
+### Features
+
+* change dependencies ([17b9b30](https://github.com/vodyani/class-decorator/commit/17b9b302921567b88bb913d5634ed5fc8fa085fa))
+
+## [8.1.2](https://github.com/vodyani/class-decorator/compare/v8.1.1...v8.1.2) (2022-08-26)
+
+
+### Bug Fixes
+
+* type ([a355892](https://github.com/vodyani/class-decorator/commit/a35589287351d7fbaf83cfcd73cba86d4d366d8c))
+
+## [8.1.1](https://github.com/vodyani/class-decorator/compare/v8.1.0...v8.1.1) (2022-08-17)
+
+
+### Bug Fixes
+
+* unpack the previous validation decorator ([2512ee5](https://github.com/vodyani/class-decorator/commit/2512ee5eac46d185367180d956efb5e5d39f75ce))
+
 ## [8.1.1-beta.1](https://github.com/vodyani/class-decorator/compare/v8.1.0...v8.1.1-beta.1) (2022-08-17)
 
 

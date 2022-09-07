@@ -1,3 +1,2 @@
-export * from './class';
-export * from './transformer';
+export * from './transform';
 export * from './validate';
