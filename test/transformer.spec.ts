@@ -12,37 +12,27 @@ import { Expose, Exclude, Type } from 'class-transformer';
 import { toAssemble, Assemble, TransformValue, TransformMap, TransformSet } from '../src';
 
 class User {
-  // @ts-ignore
   @Expose() public name: string;
-  // @ts-ignore
   @Expose() @TransformValue(toNumber) public age: number;
 }
 
 class PartOfUser extends PickType(User, ['age']) {}
 
 class ExcludeDemo {
-  // @ts-ignore
   title: string;
-  // @ts-ignore
   @Exclude() password: string;
-  // @ts-ignore
   @Expose() @TransformValue(toString) name: string;
 }
 
 class Demo {
-  // @ts-ignore
   @Expose() @Type(() => User) public user: User;
-  // @ts-ignore
   @Expose() @Type(() => User) public userArray: User[];
-  // @ts-ignore
   @Expose() @TransformSet(User) public userSet: Set<User>;
-  // @ts-ignore
   @Expose() @TransformMap(User) public userMap: Map<string, User>;
 }
 
 class Service {
   @Assemble(Demo)
-  // @ts-ignore
   public async getDemo(): Promise<Demo> {
     const user = { name: 'vodyani', age: 'USER' };
     const userArray = [{ age: '20' }];
@@ -52,7 +42,6 @@ class Service {
   }
 
   @Assemble(ExcludeDemo)
-  // @ts-ignore
   public getExcludeDemo(): ExcludeDemo {
     return Object({ password: '123' });
   }
@@ -93,13 +82,9 @@ describe('test class', () => {
     expect(result2).toEqual({ age: 0 });
 
     class User2 {
-      // @ts-ignore
       @Expose() @TransformValue((name: string) => toString(name, 'demo')) public name: string;
-      // @ts-ignore
       @Expose() @TransformValue(toNumber) public age: number;
-      // @ts-ignore
       @Expose() public setData: Set<string>;
-      // @ts-ignore
       @Expose() public arrayData: Array<string>;
     }
 

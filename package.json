@@ -61,7 +61,7 @@
     ]
   },
   "dependencies": {
-    "@vodyani/utils": "^8.5.1",
+    "@vodyani/utils": "^8.5.2",
     "autobind-decorator": "2.4.0",
     "class-transformer": "0.5.1",
     "class-validator": "0.13.2",

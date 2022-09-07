@@ -1,5 +1,3 @@
-import { Method } from '@vodyani/utils';
-
 import {
   toValidated,
   toEachValidate,
@@ -87,7 +85,7 @@ export function EachValidated(type: Class) {
  *
  * @publicApi
  */
-export function CustomValidated(validator: Method<boolean>, message: string) {
+export function CustomValidated(validator: (...args: any[]) => boolean, message: string) {
   return function(target: any, property: any, index: number) {
     const data = getReflectOwnMetadata(CustomValidatedKey, target, property);
     const metadata: ValidateMetaData = { index, message, validator };
@@ -105,7 +103,7 @@ export function CustomValidated(validator: Method<boolean>, message: string) {
  * @publicApi
  */
 export function ArgumentValidator(error: Class<Error> = Error) {
-  return function(target: any, property: string, descriptor: TypedPropertyDescriptor<Method<any>>) {
+  return function(target: any, property: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => any>) {
     const method = descriptor.value;
 
     descriptor.value = function(...args: any[]) {
@@ -127,7 +125,7 @@ export function ArgumentValidator(error: Class<Error> = Error) {
  * @publicApi
  */
 export function AssembleValidator(options?: ArgumentValidateOptions) {
-  return function(target: any, property: string, descriptor: TypedPropertyDescriptor<Method<Promise<any>>>) {
+  return function(target: any, property: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => Promise<any>>) {
     const method = descriptor.value;
     const error = options?.error || Error;
 

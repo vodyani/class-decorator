@@ -7,10 +7,7 @@ import { ValidateNested, TransformSet, TransformMap, IsNotEmpty, toValidateClass
 
 describe('test', () => {
   it('toValidateClass', async () => {
-    // @ts-ignore
     class DICT { @IsNotEmpty({ message: 'test' }) public name: string; }
-
-    // @ts-ignore
     class BASE { @ValidateNested() @Type(() => DICT) public dict: DICT[]; }
 
     const Base = new BASE();
@@ -21,27 +18,20 @@ describe('test', () => {
 
   it('toValidateClass', async () => {
     class DEMO {
-      // @ts-ignore
       @Expose() @IsNotEmpty() @IsNumber({ allowNaN: false }) test: number;
     }
 
     class Test {
-      // @ts-ignore
       @IsNotEmpty() @IsNumber({ allowNaN: false }) @Expose() age: number;
-      // @ts-ignore
       @IsNotEmpty() @IsString() @Expose() name: string;
     }
 
     class PartOfDemo extends PickType(Test, ['name']) {}
 
     class Dict {
-      // @ts-ignore
       @ValidateNested() @Expose() @Type(() => PartOfDemo) public item: PartOfDemo;
-      // @ts-ignore
       @ValidateNested({ each: true }) @Expose() @Type(() => PartOfDemo) public array: PartOfDemo[];
-      // @ts-ignore
       @ValidateNested({ each: true }) @Expose() @TransformSet(PartOfDemo) public set: Set<PartOfDemo>;
-      // @ts-ignore
       @ValidateNested({ each: true }) @Expose() @TransformMap(PartOfDemo) public map: Map<string, PartOfDemo>;
     }
 

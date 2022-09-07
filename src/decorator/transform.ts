@@ -1,6 +1,5 @@
 import { isPromise } from 'util/types';
 
-import { Method } from '@vodyani/utils';
 import { ClassTransformOptions, Transform } from 'class-transformer';
 
 import { Class } from '../common';
@@ -19,7 +18,7 @@ import { toAssemble } from '../method';
  * @publicApi
  */
 export function Assemble(type: Class, options?: ClassTransformOptions) {
-  return function(_target: any, _property: string, descriptor: TypedPropertyDescriptor<Method>) {
+  return function(_target: any, _property: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => any>) {
     const method = descriptor.value;
 
     descriptor.value = function(...args: any[]) {
@@ -43,7 +42,7 @@ export function Assemble(type: Class, options?: ClassTransformOptions) {
  *
  * @publicApi
  */
-export function TransformValue(transformer: Method, ...args: []) {
+export function TransformValue(transformer: Function, ...args: []) {
   return Transform(({ value }) => transformer(value, ...args));
 }
 /**
@@ -101,8 +100,8 @@ export function TransformMap(type: Class, options?: ClassTransformOptions) {
  *
  * @publicApi
  */
-export function ResultTransformer(transformer: Method) {
-  return function (_target: any, _property: string, descriptor: TypedPropertyDescriptor<Method>) {
+export function ResultTransformer(transformer: Function) {
+  return function (_target: any, _property: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => any>) {
     const method = descriptor.value;
 
     descriptor.value = function(...args: any[]) {
@@ -120,8 +119,8 @@ export function ResultTransformer(transformer: Method) {
  *
  * @publicApi
  */
-export function ArgumentTransformer(transformer: Method) {
-  return function (_target: any, _property: string, descriptor: TypedPropertyDescriptor<Method>) {
+export function ArgumentTransformer(transformer: Function) {
+  return function (_target: any, _property: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => any>) {
     const method = descriptor.value;
 
     descriptor.value = function(...args: any[]) {
