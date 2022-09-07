@@ -1,3 +1,10 @@
+## [8.2.2](https://github.com/vodyani/class-decorator/compare/v8.2.1...v8.2.2) (2022-09-07)
+
+
+### Bug Fixes
+
+* delete unnecessary types ([985aab8](https://github.com/vodyani/class-decorator/commit/985aab84023a4184f61095d33af2570697e068d6))
+
 ## [8.2.2-beta.1](https://github.com/vodyani/class-decorator/compare/v8.2.1...v8.2.2-beta.1) (2022-09-07)
 
 
