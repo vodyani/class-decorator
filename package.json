@@ -1,7 +1,7 @@
 {
   "name": "@vodyani/class-decorator",
   "license": "MIT",
-  "version": "8.2.1",
+  "version": "8.2.2-beta.1",
   "author": "ChoGathK",
   "description": "🏭 class-decorator is an easy-to-use toolbox that provides class validation, conversion, and property binding functions",
   "homepage": "https://github.com/vodyani/class-decorator#readme",
@@ -61,7 +61,7 @@
     ]
   },
   "dependencies": {
-    "@vodyani/utils": "^8.5.1",
+    "@vodyani/utils": "^8.5.2",
     "autobind-decorator": "2.4.0",
     "class-transformer": "0.5.1",
     "class-validator": "0.13.2",
