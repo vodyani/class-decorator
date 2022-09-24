@@ -37,7 +37,7 @@ export function toCustomValidate(
   }
 }
 
-export async function toValidated(
+export async function toValidate(
   args: any[],
   target: any,
   property: string,

@@ -27,7 +27,7 @@ describe('class', () => {
     try {
       fn(user.getName);
     } catch (error) {
-      expect(error.message).toBe('Cannot read properties of undefined (reading \'name\')');
+      expect(error.message).toBe('Cannot read property \'name\' of undefined');
     }
 
     expect(fn(user.getAge)).toBe(1);
