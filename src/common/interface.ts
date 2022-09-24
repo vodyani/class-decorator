@@ -24,7 +24,7 @@ export interface ValidateMetaData {
  *
  * @see [ValidatorOptions](https://github.com/typestack/class-validator#passing-options)
  */
-export interface ArgumentValidateOptions extends ClassValidateOptions {
+export interface ArgumentValidatorOptions extends ClassValidateOptions {
   /** The error mode */
   error?: Class<Error>;
 }
@@ -45,4 +45,3 @@ export interface ClassValidateOptions {
    */
   transform?: ClassTransformOptions;
 }
-

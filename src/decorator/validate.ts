@@ -12,7 +12,7 @@ import {
   EachValidatedKey,
   ValidateMetaData,
   CustomValidatedKey,
-  ArgumentValidateOptions,
+  ArgumentValidatorOptions,
 } from '../common';
 
 /**
@@ -124,7 +124,7 @@ export function ArgumentValidator(error: Class<Error> = Error) {
  *
  * @publicApi
  */
-export function AssembleValidator(options?: ArgumentValidateOptions) {
+export function AssembleValidator(options?: ArgumentValidatorOptions) {
   return function(target: any, property: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => Promise<any>>) {
     const method = descriptor.value;
     const error = options?.error || Error;
