@@ -1,3 +1,10 @@
+## [8.2.3](https://github.com/vodyani/class-decorator/compare/v8.2.2...v8.2.3) (2022-09-24)
+
+
+### Bug Fixes
+
+* optimizing naming ([ae2fbc4](https://github.com/vodyani/class-decorator/commit/ae2fbc4e7c0cecc7eb49df5f2368f029002f2330))
+
 ## [8.2.2](https://github.com/vodyani/class-decorator/compare/v8.2.1...v8.2.2) (2022-09-07)
 
 
