@@ -9,11 +9,11 @@ import { toNumber, toString } from '@vodyani/utils';
 import { describe, it, expect } from '@jest/globals';
 import { Expose, Exclude, Type } from 'class-transformer';
 
-import { toAssemble, Assemble, TransformValue, TransformMap, TransformSet } from '../src';
+import { toAssemble, Assembler, ValueTransformer, MapTransformer, SetTransformer } from '../src';
 
 class User {
   @Expose() public name: string;
-  @Expose() @TransformValue(toNumber) public age: number;
+  @Expose() @ValueTransformer(toNumber) public age: number;
 }
 
 class PartOfUser extends PickType(User, ['age']) {}
@@ -21,18 +21,18 @@ class PartOfUser extends PickType(User, ['age']) {}
 class ExcludeDemo {
   title: string;
   @Exclude() password: string;
-  @Expose() @TransformValue(toString) name: string;
+  @Expose() @ValueTransformer(toString) name: string;
 }
 
 class Demo {
   @Expose() @Type(() => User) public user: User;
   @Expose() @Type(() => User) public userArray: User[];
-  @Expose() @TransformSet(User) public userSet: Set<User>;
-  @Expose() @TransformMap(User) public userMap: Map<string, User>;
+  @Expose() @SetTransformer(User) public userSet: Set<User>;
+  @Expose() @MapTransformer(User) public userMap: Map<string, User>;
 }
 
 class Service {
-  @Assemble(Demo)
+  @Assembler(Demo)
   public async getDemo(): Promise<Demo> {
     const user = { name: 'vodyani', age: 'USER' };
     const userArray = [{ age: '20' }];
@@ -41,7 +41,7 @@ class Service {
     return Object({ user, userArray, userSet, userMap });
   }
 
-  @Assemble(ExcludeDemo)
+  @Assembler(ExcludeDemo)
   public getExcludeDemo(): ExcludeDemo {
     return Object({ password: '123' });
   }
@@ -82,8 +82,8 @@ describe('test class', () => {
     expect(result2).toEqual({ age: 0 });
 
     class User2 {
-      @Expose() @TransformValue((name: string) => toString(name, 'demo')) public name: string;
-      @Expose() @TransformValue(toNumber) public age: number;
+      @Expose() @ValueTransformer((name: string) => toString(name, 'demo')) public name: string;
+      @Expose() @ValueTransformer(toNumber) public age: number;
       @Expose() public setData: Set<string>;
       @Expose() public arrayData: Array<string>;
     }

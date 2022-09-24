@@ -17,7 +17,7 @@ import { toAssemble } from '../method';
  *
  * @publicApi
  */
-export function Assemble(type: Class, options?: ClassTransformOptions) {
+export function Assembler(type: Class, options?: ClassTransformOptions) {
   return function(_target: any, _property: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => any>) {
     const method = descriptor.value;
 
@@ -42,7 +42,7 @@ export function Assemble(type: Class, options?: ClassTransformOptions) {
  *
  * @publicApi
  */
-export function TransformValue(transformer: Function, ...args: []) {
+export function ValueTransformer(transformer: Function, ...args: []) {
   return Transform(({ value }) => transformer(value, ...args));
 }
 /**
@@ -59,7 +59,7 @@ export function TransformValue(transformer: Function, ...args: []) {
  *
  * @publicApi
  */
-export function TransformSet(type: Class, options?: ClassTransformOptions) {
+export function SetTransformer(type: Class, options?: ClassTransformOptions) {
   return Transform(({ value }) => {
     if (value) {
       const result = new Set();
@@ -82,7 +82,7 @@ export function TransformSet(type: Class, options?: ClassTransformOptions) {
  *
  * @publicApi
  */
-export function TransformMap(type: Class, options?: ClassTransformOptions) {
+export function MapTransformer(type: Class, options?: ClassTransformOptions) {
   return Transform(({ obj, key }) => {
     const value: Map<any, Class> = obj[key];
 

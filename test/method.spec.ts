@@ -3,7 +3,7 @@ import { PickType } from '@nestjs/swagger';
 import { describe, it, expect } from '@jest/globals';
 
 import { Expose, Type, IsNumber, IsString } from '../src/common';
-import { ValidateNested, TransformSet, TransformMap, IsNotEmpty, toValidateClass } from '../src';
+import { ValidateNested, SetTransformer, MapTransformer, IsNotEmpty, toValidateClass } from '../src';
 
 describe('test', () => {
   it('toValidateClass', async () => {
@@ -31,8 +31,8 @@ describe('test', () => {
     class Dict {
       @ValidateNested() @Expose() @Type(() => PartOfDemo) public item: PartOfDemo;
       @ValidateNested({ each: true }) @Expose() @Type(() => PartOfDemo) public array: PartOfDemo[];
-      @ValidateNested({ each: true }) @Expose() @TransformSet(PartOfDemo) public set: Set<PartOfDemo>;
-      @ValidateNested({ each: true }) @Expose() @TransformMap(PartOfDemo) public map: Map<string, PartOfDemo>;
+      @ValidateNested({ each: true }) @Expose() @SetTransformer(PartOfDemo) public set: Set<PartOfDemo>;
+      @ValidateNested({ each: true }) @Expose() @MapTransformer(PartOfDemo) public map: Map<string, PartOfDemo>;
     }
 
     expect(await toValidateClass(DEMO, { test: 1 })).toBe(null);

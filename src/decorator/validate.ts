@@ -1,5 +1,5 @@
 import {
-  toValidated,
+  toValidate,
   toEachValidate,
   toValidateRequired,
   getReflectOwnMetadata,
@@ -130,7 +130,7 @@ export function AssembleValidator(options?: ArgumentValidateOptions) {
     const error = options?.error || Error;
 
     descriptor.value = async function(...args: any[]) {
-      await toValidated(args, target, property, error, options);
+      await toValidate(args, target, property, error, options);
       await toEachValidate(args, target, property, error, options);
 
       const result = await method.apply(this, args);

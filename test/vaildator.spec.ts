@@ -6,7 +6,7 @@ import { isValidBuffer, toNumber, isValid } from '@vodyani/utils';
 
 import {
   ValidateNested, IsNotEmpty, IsNumber, IsArray, IsObject,
-  Type, Expose, TransformSet, TransformMap, TransformValue, Assemble,
+  Type, Expose, SetTransformer, MapTransformer, ValueTransformer, Assembler,
   IsString, ArgumentValidator, AssembleValidator, ValidateIf, Validated, Required, EachValidated, CustomValidated,
 } from '../src';
 
@@ -150,7 +150,7 @@ class User {
   // @ts-ignore
   @IsString() @Expose() public name: string;
   // @ts-ignore
-  @IsNumber() @Expose() @TransformValue(toNumber) public age: number;
+  @IsNumber() @Expose() @ValueTransformer(toNumber) public age: number;
 }
 
 class Demo2 {
@@ -159,13 +159,13 @@ class Demo2 {
   // @ts-ignore
   @IsArray() @ValidateNested({ each: true }) @Expose() @Type(() => User) public userArray: User[];
   // @ts-ignore
-  @IsNotEmpty() @ValidateNested({ each: true }) @Expose() @TransformSet(User) public userSet: Set<User>;
+  @IsNotEmpty() @ValidateNested({ each: true }) @Expose() @SetTransformer(User) public userSet: Set<User>;
   // @ts-ignore
-  @IsNotEmpty() @ValidateNested({ each: true }) @Expose() @TransformMap(User) public userMap: Map<string, User>;
+  @IsNotEmpty() @ValidateNested({ each: true }) @Expose() @MapTransformer(User) public userMap: Map<string, User>;
 }
 
 class Service {
-  @Assemble(Demo2)
+  @Assembler(Demo2)
   // @ts-ignore
   public async getDemo2(): Promise<Demo2> {
     const user = { name: 'vodyani', age: 'USER' };

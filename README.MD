@@ -19,8 +19,8 @@ npm install @vodyani/class-decorator
 
 ## Getting started
 
-- [使用文档 📚](https://vodyani.vercel.app/docs/other/class-decorator)
-- [Documentation 📚](https://vodyani.vercel.app/en/docs/other/class-decorator)
+- [使用文档 📚](https://vodyani.netlify.app/docs/other/class-decorator)
+- [Documentation 📚](https://vodyani.netlify.app/en/docs/other/class-decorator)
 
 ## Questions
 
