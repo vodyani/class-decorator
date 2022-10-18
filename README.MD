@@ -1,6 +1,6 @@
 # Vodyani class-decorator
 
-🏭 Vodyani class-decorator 提供了开箱即用的类装饰器，包含：类的验证、组装、转换、属性绑定等功能。
+🏭 class-decorator 是一个类装饰器工具库，提供了类的验证、组装、转换、属性绑定等功能。
 
 [![Npm](https://img.shields.io/npm/v/@vodyani/class-decorator/latest.svg)](https://www.npmjs.com/package/@vodyani/class-decorator)
 [![Npm](https://img.shields.io/npm/v/@vodyani/class-decorator/beta.svg)](https://www.npmjs.com/package/@vodyani/class-decorator)
